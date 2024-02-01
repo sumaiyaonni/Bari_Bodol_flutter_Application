@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "650533910297",
+    "project_id": "bari-bodol-cbb21",
+    "storage_bucket": "bari-bodol-cbb21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650533910297:android:b2491e0e6681708b50f788",
+        "android_client_info": {
+          "package_name": "com.example.bari_bodol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGRiYJi_g0CMhdfD24dxyvhT_mr332jYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
