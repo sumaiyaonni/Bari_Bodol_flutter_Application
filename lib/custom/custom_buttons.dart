@@ -36,6 +36,7 @@ class DefaultButton extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle2!.copyWith(
                 fontWeight: FontWeight.w300,
                 fontSize: 20.0,
+                color: Colors.white,
               ),
             ),
             Spacer(),

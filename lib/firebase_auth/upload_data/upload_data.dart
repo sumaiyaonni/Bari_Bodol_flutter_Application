@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../model/house.dart';
+
 class FirebaseDataUploader {
   static Future<void> uploadUserData({
     required String name,
@@ -35,3 +37,5 @@ class FirebaseDataUploader {
     }
   }
 }
+
+
