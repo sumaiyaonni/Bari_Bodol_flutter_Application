@@ -1,11 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../components/houses.dart';
 import '../components/search_field.dart';
 import 'app_bar.dart';
 
-class TestHomeScreen extends StatelessWidget {
+class TestHomeScreen extends StatefulWidget {
   const TestHomeScreen({Key? key}) : super(key: key);
-  static String routeName = 'HomeScreen';
+  static String routeName = 'TestHomeScreen';
+
+  @override
+  State<TestHomeScreen> createState() => _TestHomeScreenState();
+}
+
+class _TestHomeScreenState extends State<TestHomeScreen> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +21,6 @@ class TestHomeScreen extends StatelessWidget {
       body: Column(
         children: [
           TestTopSection(), // Assuming you have a TopSection component
-          SearchField(),
           SizedBox(height: MediaQuery.of(context).size.height * 0.01),
           Expanded(
             child: Houses(), // Assuming Houses is a ListView or similar widget

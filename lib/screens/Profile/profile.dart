@@ -1,10 +1,10 @@
-import 'package:bari_bodol/constants.dart';
+import 'package:bari_bodol/constants/constants.dart';
 import 'package:bari_bodol/screens/House_post/house_post.dart';
 import 'package:bari_bodol/screens/Profile/profile_image.dart';
 import 'package:bari_bodol/screens/login_screen/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'firebase_auth/fetch_data/fetch_data.dart';
+import '../../firebase_auth/fetch_data/fetch_data.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});

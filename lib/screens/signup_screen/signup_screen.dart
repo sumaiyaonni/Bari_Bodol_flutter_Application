@@ -1,4 +1,4 @@
-import 'package:bari_bodol/constants.dart';
+import 'package:bari_bodol/constants/constants.dart';
 import 'package:bari_bodol/custom/custom_buttons.dart';
 import 'package:bari_bodol/firebase_auth/firebase_auth_service.dart';
 import 'package:bari_bodol/firebase_auth/upload_data/upload_data.dart';

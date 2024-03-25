@@ -4,7 +4,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../constants.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import '../../constants/constants.dart';
 import '../../custom/custom_buttons.dart';
 
 class PostHouseRent extends StatefulWidget {
@@ -19,16 +20,21 @@ class _PostHouseRentState extends State<PostHouseRent> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _priceOfHouse = TextEditingController();
   TextEditingController _phoneNumberController = TextEditingController();
-  TextEditingController _address = TextEditingController();
   TextEditingController _houseDetails = TextEditingController();
   TextEditingController _bedRoomsController = TextEditingController();
   TextEditingController _bathRoomsController = TextEditingController();
   TextEditingController _garagesController = TextEditingController();
+  TextEditingController _areaController = TextEditingController();
+  TextEditingController _sectorController = TextEditingController();
+  TextEditingController _roadController = TextEditingController();
+  TextEditingController _othersController = TextEditingController();
 
   List<File> _images = [];
   final picker = ImagePicker();
 
   bool _isUploading = false;
+  double _uploadProgress = 0.0;
+
 
   Future<void> _getImage() async {
     final pickedFiles = await picker.pickMultiImage(
@@ -36,14 +42,9 @@ class _PostHouseRentState extends State<PostHouseRent> {
       maxHeight: 600,
       imageQuality: 85,
     );
-
-    if (_images.length + pickedFiles.length <= 6) {
       setState(() {
         _images.addAll(pickedFiles.map((file) => File(file.path)));
       });
-    } else {
-      print("You can't select more than 6 images.");
-    }
     }
 
   Future<void> _uploadAllData() async {
@@ -58,13 +59,18 @@ class _PostHouseRentState extends State<PostHouseRent> {
         if (firebaseUser != null) {
           String price = _priceOfHouse.text;
           String number = _phoneNumberController.text;
-          String address = _address.text;
+          String area = _areaController.text;
+          String sector = _sectorController.text;
+          String road = _roadController.text;
+          String others = _othersController.text;
+          String address = '$area, Sector: $sector, Road: $road, Others: $others';
           String description = _houseDetails.text;
           String bedRooms = _bedRoomsController.text;
           String bathRooms = _bathRoomsController.text;
           String garages = _garagesController.text;
 
           List<String> imageUrl = [];
+          double totalProgress = 0.0;
 
           for (var imageFile in _images) {
             Reference ref = FirebaseStorage.instance.ref().child(
@@ -74,6 +80,11 @@ class _PostHouseRentState extends State<PostHouseRent> {
             TaskSnapshot snapshot = await uploadTask;
             String imageURL = await snapshot.ref.getDownloadURL();
             imageUrl.add(imageURL);
+
+            totalProgress += 1 / _images.length;
+            setState(() {
+              _uploadProgress = totalProgress;
+            });
           }
 
           await FirebaseFirestore.instance.collection("RentPost").add({
@@ -161,9 +172,12 @@ class _PostHouseRentState extends State<PostHouseRent> {
     } finally {
       setState(() {
         _isUploading = false;
+        _uploadProgress = 0.0;
       });
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +188,13 @@ class _PostHouseRentState extends State<PostHouseRent> {
       ),
       body: _isUploading
           ? Center(
-        child: CircularProgressIndicator(),
+        child: CircularPercentIndicator(
+          radius: 80.0,
+          lineWidth: 16.0,
+          percent: _uploadProgress,
+          center: Text('${(_uploadProgress * 100).toStringAsFixed(0)}%'),
+          progressColor: Colors.blue,
+        ),
       )
           : SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -183,24 +203,30 @@ class _PostHouseRentState extends State<PostHouseRent> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _buildInputField(_priceOfHouse, 'Rent Of House'),
+              _buildInputField(_priceOfHouse, 'Rent'),
               SizedBox(height: 16.0),
-              _buildInputField(_phoneNumberController, 'Phone Number'),
+              _buildInputField(_phoneNumberController, 'Contact Number'),
               SizedBox(height: 16.0),
-              _buildInputField(_address, 'Address'),
+              _buildInputField(_areaController, 'Area'),
+              SizedBox(height: 16.0),
+              _buildInputField(_sectorController, 'Sector'),
+              SizedBox(height: 16.0),
+              _buildInputField(_roadController, 'Road'),
+              SizedBox(height: 16.0),
+              _buildInputField(_othersController, "Other's Address"),
               SizedBox(height: 16.0),
               _buildInputField(_houseDetails, 'House Details'),
               SizedBox(height: 16.0),
-              _buildInputField(_bedRoomsController, 'Bedrooms',
+              _buildInputField(_bedRoomsController, 'Number of Bedrooms',
                   keyboardType: TextInputType.number),
               SizedBox(height: 16.0),
-              _buildInputField(_bathRoomsController, 'Bathrooms',
+              _buildInputField(_bathRoomsController, 'Number of Bathrooms',
                   keyboardType: TextInputType.number),
               SizedBox(height: 16.0),
-              _buildInputField(_garagesController, 'Garages',
+              _buildInputField(_garagesController, 'Parking',
                   keyboardType: TextInputType.number),
               SizedBox(height: 16.0),
-              DefaultButton(onPress: _getImage, title: 'Select Images (max-5)'),
+              DefaultButton(onPress: _getImage, title: 'Select Images'),
               SizedBox(height: 16.0),
               _images.isEmpty
                   ? Container()
@@ -217,8 +243,8 @@ class _PostHouseRentState extends State<PostHouseRent> {
                   );
                 }).toList(),
               ),
-              SizedBox(height: 16.0),
-              DefaultButton(onPress: _uploadAllData, title: 'Post Rent House'),
+              const SizedBox(height: 16.0),
+              DefaultButton(onPress: _uploadAllData, title: 'POST'),
             ],
           ),
         ),

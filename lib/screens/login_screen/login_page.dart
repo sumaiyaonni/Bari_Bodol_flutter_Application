@@ -1,10 +1,12 @@
-import 'package:bari_bodol/constants.dart';
+import 'package:bari_bodol/constants/constants.dart';
 import 'package:bari_bodol/custom/custom_buttons.dart';
 import 'package:bari_bodol/firebase_auth/firebase_auth_service.dart';
 import 'package:bari_bodol/screens/home/home_screen.dart';
 import 'package:bari_bodol/screens/signup_screen/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../Reset_Screen/reset_password.dart';
 
 
 late bool _passwordVisible;
@@ -44,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
         if (user != null) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Row(
+            content: const Row(
               children: [
                 Icon(
                   Icons.accessible_forward,
@@ -53,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    "Successfully SignIn",
+                    "Welcome to Bari Bodol",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -194,7 +196,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         buildPasswordField(),
                         sizeBox,
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PasswordResetPage(),
+                              ),
+                            );
+                          },
                           child: const Align(
                             alignment: Alignment.bottomRight,
                             child: Text(

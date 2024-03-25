@@ -6,7 +6,7 @@ import 'package:flutter/painting.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 
-import '../../../constants.dart';
+import '../../../constants/constants.dart';
 
 class HouseDetails extends StatefulWidget {
   final House house;

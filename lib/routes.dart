@@ -1,4 +1,5 @@
 import 'package:bari_bodol/screens/House_post/house_post.dart';
+import 'package:bari_bodol/screens/Reset_Screen/reset_password.dart';
 import 'package:bari_bodol/screens/welcome.dart';
 import 'package:flutter/cupertino.dart';
 import 'screens/home/home_screen.dart';
@@ -13,5 +14,6 @@ Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName : (context) =>  const HomeScreen(),
   WelcomeScreen.routeName : (context) =>  const WelcomeScreen(),
   PostHouseRent.routeName : (context) =>  const PostHouseRent(),
+  PasswordResetPage.routeName : (context) =>  const PasswordResetPage(),
 
 };

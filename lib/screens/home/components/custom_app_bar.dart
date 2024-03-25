@@ -1,7 +1,7 @@
 import 'package:bari_bodol/constants/colors..dart';
 import 'package:bari_bodol/constants/styles.dart';
 import 'package:bari_bodol/firebase_auth/fetch_data/fetch_data.dart';
-import 'package:bari_bodol/profile.dart';
+import 'package:bari_bodol/screens/Profile/profile.dart';
 import 'package:bari_bodol/screens/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
 
