@@ -143,15 +143,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         leading: TextButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const TestHomeScreen(),
-                ),
-              );
+              Navigator.pop(context);
             },
             child: const Icon(
-              Icons.arrow_back_ios,
+              Icons.arrow_back_ios,color: kTextWhiteColor,
             )),
       ),
       body: ListView(
@@ -234,8 +229,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         sizeBox,
                         InkWell(
                           onTap: () {
-                            Navigator.pushNamedAndRemoveUntil(context,
-                                LoginScreen.routeName, (route) => false);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginScreen(),
+                              ),
+                            );
                           },
                           child: const Align(
                             alignment: Alignment.bottomCenter,

@@ -1,6 +1,7 @@
 import 'package:bari_bodol/constants/constants.dart';
 import 'package:bari_bodol/custom/custom_buttons.dart';
 import 'package:bari_bodol/firebase_auth/firebase_auth_service.dart';
+import 'package:bari_bodol/screens/home/Test_Screen/test_Home_Screen.dart';
 import 'package:bari_bodol/screens/home/home_screen.dart';
 import 'package:bari_bodol/screens/signup_screen/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -128,12 +129,13 @@ class _LoginScreenState extends State<LoginScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SignUpScreen(),
+                  builder: (context) => const TestHomeScreen(),
                 ),
               );
             },
             child: const Icon(
               Icons.arrow_back_ios,
+              color: kTextWhiteColor,
             )),
       ),
       body: ListView(
@@ -224,8 +226,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         sizeBox,
                         InkWell(
                           onTap: () {
-                            Navigator.pushNamedAndRemoveUntil(context,
-                                SignUpScreen.routeName, (route) => false);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignUpScreen(),
+                              ),
+                            );
                           },
                           child: const Align(
                             alignment: Alignment.bottomCenter,
