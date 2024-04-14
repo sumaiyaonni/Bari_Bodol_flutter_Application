@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../components/houses.dart';
-import '../components/search_field.dart';
 import 'app_bar.dart';
 
 class TestHomeScreen extends StatefulWidget {

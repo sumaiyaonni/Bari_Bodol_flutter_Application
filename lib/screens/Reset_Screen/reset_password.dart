@@ -50,7 +50,8 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Password Reset'),
+        title: const Text('Password Reset'),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -63,12 +64,12 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                 children: [
                   TextField(
                     controller: _emailController,
-                    decoration: InputDecoration(labelText: 'Email'),
+                    decoration: const InputDecoration(labelText: 'Email'),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () => _resetPassword(_emailController.text.trim()),
-                    child: Text('Reset Password'),
+                    child: const Text('Reset Password'),
                   ),
                 ],
               ),
@@ -77,19 +78,19 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                 children: [
                   TextField(
                     controller: _passwordController,
-                    decoration: InputDecoration(labelText: 'New Password'),
+                    decoration: const InputDecoration(labelText: 'New Password'),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () => _updatePassword(_passwordController.text),
-                    child: Text('Update Password'),
+                    child: const Text('Update Password'),
                   ),
                 ],
               ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               _resetMessage,
-              style: TextStyle(color: Colors.red),
+              style: const TextStyle(color: Colors.red),
               textAlign: TextAlign.center,
             ),
           ],

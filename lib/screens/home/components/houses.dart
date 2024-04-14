@@ -35,6 +35,7 @@ class _HousesState extends State<Houses> {
           number: doc['number'],
           isFav: doc['isFav'],
           moreImagesUrl: List<String>.from(doc['moreImagesUrl']),
+          docId: doc.id,
         );
       }).toList();
     });

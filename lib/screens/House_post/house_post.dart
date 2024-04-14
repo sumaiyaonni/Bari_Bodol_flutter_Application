@@ -30,22 +30,24 @@ class _PostHouseRentState extends State<PostHouseRent> {
   TextEditingController _othersController = TextEditingController();
 
   List<File> _images = [];
-  final picker = ImagePicker();
-
   bool _isUploading = false;
   double _uploadProgress = 0.0;
 
-
   Future<void> _getImage() async {
+    final picker = ImagePicker();
     final pickedFiles = await picker.pickMultiImage(
       maxWidth: 800,
       maxHeight: 600,
       imageQuality: 85,
     );
-      setState(() {
+    setState(() {
+      if (pickedFiles != null) {
+        // Add the selected images to the list
         _images.addAll(pickedFiles.map((file) => File(file.path)));
-      });
-    }
+      }
+    });
+  }
+
 
   Future<void> _uploadAllData() async {
     setState(() {
@@ -103,7 +105,7 @@ class _PostHouseRentState extends State<PostHouseRent> {
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Row(
+              content: const Row(
                 children: [
                   Icon(
                     Icons.accessible_forward,
@@ -136,7 +138,7 @@ class _PostHouseRentState extends State<PostHouseRent> {
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Row(
+              content: const Row(
                 children: [
                   Icon(
                     Icons.nearby_error,
@@ -156,7 +158,7 @@ class _PostHouseRentState extends State<PostHouseRent> {
               ),
               backgroundColor: kErrorBorderColor,
               behavior: SnackBarBehavior.floating,
-              duration: Duration(seconds: 5),
+              duration: const Duration(seconds: 5),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),

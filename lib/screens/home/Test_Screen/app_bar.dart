@@ -1,7 +1,6 @@
 import 'package:bari_bodol/constants/colors..dart';
 import 'package:bari_bodol/constants/styles.dart';
 import 'package:bari_bodol/screens/login_screen/login_page.dart';
-import 'package:bari_bodol/screens/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class TestTopSection extends StatelessWidget {

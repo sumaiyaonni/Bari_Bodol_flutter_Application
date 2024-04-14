@@ -127,10 +127,10 @@ class _LoginScreenState extends State<LoginScreen> {
         leading: TextButton(
             onPressed: () {
               Navigator.push(
-                context,
-                MaterialPageRoute(
+                  context,
+                  MaterialPageRoute(
                   builder: (context) => const TestHomeScreen(),
-                ),
+              ),
               );
             },
             child: const Icon(
@@ -227,10 +227,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
+                                context,
+                                MaterialPageRoute(
                                 builder: (context) => const SignUpScreen(),
-                              ),
+                            ),
                             );
                           },
                           child: const Align(

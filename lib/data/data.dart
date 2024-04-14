@@ -27,6 +27,7 @@ Future<List<House>> fetchHousesFromFirebase() async {
         number: doc['number'],
         isFav: doc['isFav'],
         moreImagesUrl: List<String>.from(doc['moreImagesUrl']),
+        docId: doc['docId'],
       );
       houseList.add(house);
     }

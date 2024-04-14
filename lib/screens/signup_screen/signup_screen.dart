@@ -146,7 +146,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Navigator.pop(context);
             },
             child: const Icon(
-              Icons.arrow_back_ios,color: kTextWhiteColor,
+              Icons.arrow_back_ios,
+              color: kTextWhiteColor,
             )),
       ),
       body: ListView(
@@ -230,10 +231,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
+                                context,
+                                MaterialPageRoute(
                                 builder: (context) => const LoginScreen(),
-                              ),
+                            ),
                             );
                           },
                           child: const Align(

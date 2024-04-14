@@ -1,5 +1,6 @@
 import 'package:bari_bodol/constants/colors..dart';
 import 'package:flutter/material.dart';
+import '../firebase_auth/auth_gate.dart';
 import 'home/Test_Screen/test_Home_Screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -60,7 +61,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const TestHomeScreen(),
+                      builder: (context) => const AuthGate(),
                     ),
                   );
                 },
@@ -69,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TestHomeScreen(),
+                        builder: (context) => const AuthGate(),
                       ),
                     );
                   },

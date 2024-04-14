@@ -9,6 +9,7 @@ class House {
   String garages;
   List<String> moreImagesUrl;
   bool isFav;
+  String docId;
 
   House({
     required this.imageUrl,
@@ -21,5 +22,6 @@ class House {
     required this.garages,
     required this.moreImagesUrl,
     required this.isFav,
+    required this.docId,
   });
 }
